@@ -33,7 +33,7 @@ var usersController = require('./controllers/users.js');
 app.use('/users', usersController);
 
 app.get('/', function (req, res) {
-  if(session.currentUser) {
+  if(req.session.currentUser) {
     res.render('home');
   } else {
     res.redirect(301, 'users/login');

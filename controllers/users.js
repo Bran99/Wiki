@@ -1,16 +1,35 @@
 var express = require('express'),
     router = express.Router(),
-    Article = require('../models/user.js');
+    User = require('../models/user.js');
 
 // remember, every route has /posts before it in here...
 
-// INDEX
+router.get('/', function (req, res) {
+  if(req.sessions.currentUser) {
+    res.redirect(301, '/articles');
+  } else {
+    res.redirect(301, '/users/login');
+  };
+});
+
+// LOGIN
 router.get('/login', function (req, res) {
   User.find({}, function (err, usersArray) {
     if (err) {
       console.log(err);
     } else {
       res.render('users/login');
+    };
+  });
+});
+
+router.post('/login', function (req, res) {
+  User.findOne({userName : req.body.users.userName}, function (err, user) {
+    if(user && req.body.users.password === user.password) {
+      req.session.currentUser = user.userName;
+      res.redirect(301, '/');
+    } else {
+      res.redirect(301, '/users/login');
     };
   });
 });

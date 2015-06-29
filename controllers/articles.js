@@ -7,7 +7,7 @@ var express = require('express'),
 
 // INDEX
 router.get('/', function (req, res) {
-  if(session.currentUser) {
+  if(req.session.currentUser) {
     Article.find({}, function (err, articlesArray) {
       if (err) {
         console.log(err);
@@ -22,7 +22,7 @@ router.get('/', function (req, res) {
 
 // NEW
 router.get('/new', function (req, res) {
-  if(session.currentUser) {
+  if(req.session.currentUser) {
     res.render('articles/new');
   } else {
     res.redirect(301, '/users/login');
@@ -44,7 +44,7 @@ router.post('/', function (req, res) {
 
 // SHOW
 router.get('/:id', function (req, res) {
-  if(session.currentUser) {
+  if(req.session.currentUser) {
     Article.findById(req.params.id, function (err, article) {
       if(err) {
         console.log(err);
@@ -71,7 +71,7 @@ router.delete('/:id', function (req, res) {
 
 // EDIT
 router.get('/:id/edit', function (req, res) {
-  if(session.currentUser) {
+  if(req.session.currentUser) {
     Article.findById(req.params.id, function (err, article) {
       if (err) {
         console.log(err);
