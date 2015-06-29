@@ -59,11 +59,10 @@ router.get('/:id', function (req, res) {
 
 // DELETE
 router.delete('/:id', function (req, res) {
-  Article.findById(req.params.id, function (err, article) {
+  Article.remove({_id : req.params.id}, function (err, result) {
     if(err) {
       console.log(err);
     } else {
-      Article.remove(article);
       res.redirect(301, '/articles');
     };
   });
