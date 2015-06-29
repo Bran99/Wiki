@@ -7,9 +7,10 @@ var sectionSchema = Schema({
 });
 
 var articleSchema = Schema({
-  author: String,
-  title: String,
-  content: [sectionSchema]
+  author: {type: String, required: true},
+  title: {type: String, required: true},
+  content: [sectionSchema],
+  category: {type: String, required: true}
 });
 
 var Section = mongoose.model("Section", sectionSchema);

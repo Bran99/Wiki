@@ -1,5 +1,6 @@
 <h1><%= article.title %></h1>
 <p>By <%= article.author %></p>
+<h2><%= article.category %></h2>
 <a href="/articles/<%= article._id %>/edit">Edit</a>
 <form action="/articles/<%= article._id %>?_method=DELETE" method="post">
   <input type="submit" value="Delete This Article">

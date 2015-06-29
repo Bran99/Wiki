@@ -1,5 +1,18 @@
 <h1>Create a new article</h1>
 <form action="/articles" method="post">
+  <label for="category">Category:</label><br/>
+  <select name="article[category]" id="category">
+    <option value="Code">Code</option>
+    <option value="Food">Food</option>
+    <option value="Fashion">Fashion</option>
+    <option value="Science">Science</option>
+    <option value="History">History</option>
+    <option value="Movies">Movies</option>
+    <option value="Politics">Politics</option>
+    <option value="Philosophy">Philosophy</option>
+    <option value="Architecture">Architecture</option>
+    <option value="Life-Hacks">Life-Hacks</option>
+  </select>
   <label for="author">Author:<br/></label>
   <input id="author" type="text" name="article[author]"><br/>
   <label for="title">Title:<br/></label>

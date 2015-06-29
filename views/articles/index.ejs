@@ -2,6 +2,7 @@
 <dl>
   <% articles.forEach(function (eachArticle) { %>
     <dt><a href="/articles/<%= eachArticle._id %>"><%= eachArticle.title %></a></dt>
+    <dd><%= eachArticle.category %></dd>
     <dd><%= eachArticle.content[0].content %></dd>
   <% }) %>
 </dl>
