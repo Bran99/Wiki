@@ -29,6 +29,7 @@ router.post('/login', function (req, res) {
   User.findOne({userName : req.body.users.userName}, function (err, user) {
     if(user && bcrypt.compareSync(req.body.users.password, user.password)) {
       req.session.currentUser = user.userName;
+      req.session.currentUserId = user._id;
       res.redirect(301, '/');
     } else {
       res.redirect(301, '/users/login');
@@ -58,7 +59,7 @@ router.post('/', function (req, res) {
 
 // SHOW
 router.get('/:id', function (req, res) {
-  if(session.currentUser) {
+  if(req.session.currentUser) {
     User.findById(req.params.id, function (err, user) {
       if(err) {
         console.log(err);
@@ -73,7 +74,7 @@ router.get('/:id', function (req, res) {
 
 // DELETE
 router.delete('/:id', function (req, res) {
-  if(session.currentUser) {
+  if(req.session.currentUser) {
     User.findById(req.params.id, function (err, user) {
       if(err) {
         console.log(err);
@@ -89,7 +90,7 @@ router.delete('/:id', function (req, res) {
 
 // EDIT
 router.get('/:id/edit', function (req, res) {
-  if(session.currentUser) {
+  if(req.session.currentUser) {
     User.findById(req.params.id, function (err, user) {
       if (err) {
         console.log(err);

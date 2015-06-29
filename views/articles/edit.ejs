@@ -25,9 +25,9 @@
     <textarea id="content" name="article[content][<%= i %>][content]" ><%= article.content[i].content %></textarea><br/>
   <% } %>
 </fieldset>
-  <input id="new-section" type="submit" value="Add a section">
-  <input type="submit">
-  <input id="hidden-value" type="hidden" value="<%= article.content.length %>">
-  <a href="/articles/<%= article._id %>">Cancel</a>
+  <input class="waves-effect waves-light btn" id="new-section" type="submit" value="Add a section">
+  <input class="waves-effect waves-light btn" type="submit">
+  <input class="waves-effect waves-light btn" id="hidden-value" type="hidden" value="<%= article.content.length %>">
+  <a class="waves-effect waves-light btn" href="/articles/<%= article._id %>">Cancel</a>
 </form>
 <script src="/scripts/newArticle.js"></script>

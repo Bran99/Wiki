@@ -1,9 +1,10 @@
-<h1><%= article.title %></h1>
+
+<h1 class="page-title"><%= article.title %></h1>
 <p>By <%= article.author %></p>
 <h2><%= article.category %></h2>
-<a href="/articles/<%= article._id %>/edit">Edit</a>
+<a class="waves-effect waves-light btn" href="/articles/<%= article._id %>/edit">Edit</a>
 <form action="/articles/<%= article._id %>?_method=DELETE" method="post">
-  <input type="submit" value="Delete This Article">
+  <input class="waves-effect waves-light btn" type="submit" value="Delete This Article">
 </form>
 <% for(var i = 0; i < article.content.length; i++) { %>
   <h2><%= article.content[i].title %></h2>

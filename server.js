@@ -34,7 +34,7 @@ app.use('/users', usersController);
 
 app.get('/', function (req, res) {
   if(req.session.currentUser) {
-    res.render('home');
+    res.render('home', {user : req.session.currentUserId});
   } else {
     res.redirect(301, 'users/login');
   }
