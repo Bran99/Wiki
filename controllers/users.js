@@ -5,7 +5,7 @@ var express = require('express'),
 // remember, every route has /posts before it in here...
 
 router.get('/', function (req, res) {
-  if(req.sessions.currentUser) {
+  if(req.session.currentUser) {
     res.redirect(301, '/articles');
   } else {
     res.redirect(301, '/users/login');
