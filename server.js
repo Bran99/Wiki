@@ -19,6 +19,12 @@ app.use(expressLayouts);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
+app.use(session({
+  secret: "hiitsmeimsuchasecret",
+  resave: true,
+  saveUninitialized: false
+}));
+
 // in controller/posts.js we stash all posts routes
 var articlesController = require('./controllers/articles.js');
 app.use('/articles', articlesController);
@@ -27,6 +33,11 @@ var usersController = require('./controllers/users.js');
 app.use('/users', usersController);
 
 app.get('/', function (req, res) {
+  if(session.currentUser) {
+    res.render('home');
+  } else {
+    res.redirect(301, 'users/login');
+  }
   res.render('home');
 });
 

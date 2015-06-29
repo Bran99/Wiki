@@ -7,18 +7,26 @@ var express = require('express'),
 
 // INDEX
 router.get('/', function (req, res) {
-  Article.find({}, function (err, articlesArray) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render('articles/index', { articles : articlesArray });
-    };
-  });
+  if(session.currentUser) {
+    Article.find({}, function (err, articlesArray) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render('articles/index', { articles : articlesArray });
+      };
+    });
+  } else {
+    res.redirect(301, '/users/login');
+  };
 });
 
 // NEW
 router.get('/new', function (req, res) {
-  res.render('articles/new');
+  if(session.currentUser) {
+    res.render('articles/new');
+  } else {
+    res.redirect(301, '/users/login');
+  };
 });
 
 // CREATE
@@ -36,13 +44,17 @@ router.post('/', function (req, res) {
 
 // SHOW
 router.get('/:id', function (req, res) {
-  Article.findById(req.params.id, function (err, article) {
-    if(err) {
-      console.log(err);
-    } else {
-      res.render('articles/show', { article : article });
-    };
-  });
+  if(session.currentUser) {
+    Article.findById(req.params.id, function (err, article) {
+      if(err) {
+        console.log(err);
+      } else {
+        res.render('articles/show', { article : article });
+      };
+    });
+  } else {
+    res.redirect(301, '/users/login');
+  };
 });
 
 // DELETE
@@ -59,13 +71,17 @@ router.delete('/:id', function (req, res) {
 
 // EDIT
 router.get('/:id/edit', function (req, res) {
-  Article.findById(req.params.id, function (err, article) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render('articles/edit', { article : article });
-    };
-  });
+  if(session.currentUser) {
+    Article.findById(req.params.id, function (err, article) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render('articles/edit', { article : article });
+      };
+    });
+  } else {
+    res.redirect(301, '/users/login');
+  };
 });
 
 // UPDATE

@@ -5,12 +5,12 @@ var express = require('express'),
 // remember, every route has /posts before it in here...
 
 // INDEX
-router.get('/', function (req, res) {
+router.get('/login', function (req, res) {
   User.find({}, function (err, usersArray) {
     if (err) {
       console.log(err);
     } else {
-      res.render('users/index', { users : usersArray });
+      res.render('users/login');
     };
   });
 });
@@ -28,43 +28,56 @@ router.post('/', function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.redirect(301, '/articles');
+      session.currentUser = req.body.user.username;
+      res.redirect(301, '/users/login');
     };
   });
 });
 
 // SHOW
 router.get('/:id', function (req, res) {
-  User.findById(req.params.id, function (err, user) {
-    if(err) {
-      console.log(err);
-    } else {
-      res.render('users/show', { user : user });
-    };
-  });
+  if(session.currentUser) {
+    User.findById(req.params.id, function (err, user) {
+      if(err) {
+        console.log(err);
+      } else {
+        res.render('users/show', { user : user });
+      };
+    });
+  } else {
+    res.redirect('/users/login');
+  };
 });
 
 // DELETE
 router.delete('/:id', function (req, res) {
-  User.findById(req.params.id, function (err, user) {
-    if(err) {
-      console.log(err);
-    } else {
-      User.remove(user);
-      res.redirect(301, '/users');
-    };
-  });
+  if(session.currentUser) {
+    User.findById(req.params.id, function (err, user) {
+      if(err) {
+        console.log(err);
+      } else {
+        User.remove(user);
+        res.redirect(301, '/users');
+      };
+    });
+  } else {
+    res.redirect('/users/login');
+  }
 });
 
 // EDIT
 router.get('/:id/edit', function (req, res) {
-  User.findById(req.params.id, function (err, user) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render('users/edit', { user : user });
-    };
-  });
+  if(session.currentUser) {
+    User.findById(req.params.id, function (err, user) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render('users/edit', { user : user });
+      };
+    });
+  } else {
+    res.redirect('/users/login');
+  }
 });
 
 // UPDATE

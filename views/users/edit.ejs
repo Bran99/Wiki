@@ -1,0 +1,9 @@
+<form action="/users/<%= user._id %>?_method=PATCH" method="post">
+  <label for="name">Name:</label><br/>
+  <input id="name" type="text" name="user[name]" value="<%= user.name %>"><br/>
+  <label for="username">Username:</label><br/>
+  <input id="username" type="text" name="user[userName]" value="<%= user.userName %>"><br/>
+  <label for="password">Password:</label><br/>
+  <input id="password" type="text" name="user[password]" placeholder="Please enter a new password"><br/>
+  <input type="submit">
+</form>
