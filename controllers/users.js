@@ -1,6 +1,8 @@
 var express = require('express'),
     router = express.Router(),
-    User = require('../models/user.js');
+    User = require('../models/user.js'),
+    bcrypt = require('bcrypt'),
+    salt = bcrypt.genSaltSync(10);
 
 // remember, every route has /posts before it in here...
 
@@ -25,7 +27,7 @@ router.get('/login', function (req, res) {
 
 router.post('/login', function (req, res) {
   User.findOne({userName : req.body.users.userName}, function (err, user) {
-    if(user && req.body.users.password === user.password) {
+    if(user && bcrypt.compareSync(req.body.users.password, user.password)) {
       req.session.currentUser = user.userName;
       res.redirect(301, '/');
     } else {
@@ -42,12 +44,13 @@ router.get('/new', function (req, res) {
 // CREATE
 router.post('/', function (req, res) {
   var newUser = new User(req.body.user);
+  newUser.password = bcrypt.hashSync(newUser.password, salt);
 
   newUser.save(function (err, user) {
     if (err) {
       console.log(err);
     } else {
-      session.currentUser = req.body.user.username;
+      req.session.currentUser = req.body.user.username;
       res.redirect(301, '/users/login');
     };
   });
