@@ -5,7 +5,8 @@ var express = require('express'),
     methodOverride = require('method-override'),
     expressLayouts = require('express-ejs-layouts'),
     morgan = require('morgan'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    session = require('express-session');
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
@@ -21,6 +22,9 @@ app.use(methodOverride('_method'));
 // in controller/posts.js we stash all posts routes
 var articlesController = require('./controllers/articles.js');
 app.use('/articles', articlesController);
+
+var usersController = require('./controllers/users.js');
+app.use('/users', usersController);
 
 app.get('/', function (req, res) {
   res.render('home');
