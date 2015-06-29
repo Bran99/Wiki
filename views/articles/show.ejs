@@ -4,7 +4,9 @@
 <h2><%= article.category %></h2>
 <a class="waves-effect waves-light btn" href="/articles/<%= article._id %>/edit">Edit</a>
 <form action="/articles/<%= article._id %>?_method=DELETE" method="post">
-  <input class="waves-effect waves-light btn" type="submit" value="Delete This Article">
+  <div class="input-field">
+    <input class="waves-effect waves-light btn" type="button" value="Delete This Article">
+  </div>
 </form>
 <% for(var i = 0; i < article.content.length; i++) { %>
   <h2><%= article.content[i].title %></h2>

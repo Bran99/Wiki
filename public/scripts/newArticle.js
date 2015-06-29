@@ -2,6 +2,8 @@ var sectionCounter = $('#hidden-value').val() || 1;
 var $newSection = $('#new-section');
 $newSection.on('click', function () {
   event.preventDefault();
+  var $divOne = $('<div class="input-field">');
+  var $divTwo = $('<div class="input-field">');
   var $newSectionLabel =
     $('<label for="section' + sectionCounter + '">');
   var $newContentLabel =
@@ -14,10 +16,13 @@ $newSection.on('click', function () {
   $newSectionLabel.text('Section Title:').append($('<br/>'));
   $newContentLabel.text('Section Content:').append($('<br/>'));
   $newTextArea.append($('<br/>'))
-  $('fieldset').append($newSectionLabel)
-               .append($newInput)
-               .append($newContentLabel)
-               .append($newTextArea)
-               .append($('<br/>'));
+  $divOne.append($newSectionLabel)
+         .append($newInput)
+         .append($('<br/>'));
+  $divTwo.append($newContentLabel)
+         .append($newTextArea)
+         .append($('<br/>'));
+  $('fieldset').append($divOne)
+               .append($divTwo);
   sectionCounter++;
 });
