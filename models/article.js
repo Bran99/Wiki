@@ -15,5 +15,7 @@ var articleSchema = Schema({
 var Section = mongoose.model("Section", sectionSchema);
 var Article = mongoose.model("Article", articleSchema);
 
-module.exports = { Article: Article,
-                   Section: Section};
+module.exports = {
+                   Article: Article,
+                   Section: Section
+                 };

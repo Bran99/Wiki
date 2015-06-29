@@ -1,0 +1,18 @@
+<h1>Edit <%= article.title %></h1>
+<form action="/articles/<%= article._id %>?_method=PATCH" method="post">
+  <label for="author">Author: </label><br/>
+  <input id="author" type="text" name="article[author]" value="<%= article.author %>"><br/>
+  <label for="title">Title: </label><br/>
+  <input id="title" type="text" name="article[title]" value="<%= article.title %>"><br/>
+  <fieldset>
+  <% for(var i = 0; i < article.content.length; i++) { %>
+    <label for="section">Section Title: </label><br/>
+    <input id="section" type="text" name="article[content][<%= i %>][title]" value="<%= article.content[i].title %>"><br/>
+    <label for="content">Section Content:</label><br/>
+    <textarea id="content" name="article[content][<%= i %>][content]" ><%= article.content[i].content %></textarea><br/>
+  <% } %>
+</fieldset>
+  <input id="new-section" type="submit" value="Add a section">
+  <input type="submit">
+</form>
+<script src="/scripts/newArticle.js"></script>

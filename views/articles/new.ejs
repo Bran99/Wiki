@@ -1,0 +1,16 @@
+<h1>Create a new article</h1>
+<form action="/articles" method="post">
+  <label for="author">Author:<br/></label>
+  <input id="author" type="text" name="article[author]"><br/>
+  <label for="title">Title:<br/></label>
+  <input id="title" type="text" name="article[title]"><br/>
+  <fieldset>
+    <label for="section0">Section Title:<br/></label>
+    <input id="section0" type="text" name="article[content][0][title]"><br/>
+    <label for="content0">Section Content:<br/></label>
+    <textarea id="content0" name="article[content][0][content]"></textarea><br/>
+  </fieldset>
+  <input id="new-section" type="submit" value="Add a section">
+  <input type="submit">
+</form>
+<script src="/scripts/newArticle.js" type="text/javascript"></script>

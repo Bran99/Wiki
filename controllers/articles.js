@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render('articles/index', { articles: articlesArray });
+      res.render('articles/index', { articles : articlesArray });
     };
   });
 });
@@ -29,14 +29,20 @@ router.post('/', function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.redirect(301, '/article');
+      res.redirect(301, '/articles');
     };
   });
 });
 
 // SHOW
 router.get('/:id', function (req, res) {
-
+  Article.findById(req.params.id, function (err, article) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.render('articles/show', { article : article });
+    };
+  });
 });
 
 // DELETE
@@ -46,12 +52,24 @@ router.delete('/:id', function (req, res) {
 
 // EDIT
 router.get('/:id/edit', function (req, res) {
-
+  Article.findById(req.params.id, function (err, article) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('articles/edit', { article : article });
+    };
+  });
 });
 
 // UPDATE
 router.patch('/:id', function (req, res) {
-
+  Article.update({_id : req.params.id}, req.body.article, function (err, result) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.redirect(301, '/articles/' + req.params.id);
+    };
+  });
 });
 
 
