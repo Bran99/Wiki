@@ -1,4 +1,4 @@
-var sectionCounter = 1;
+var sectionCounter = $('#hidden-value').val() || 1;
 var $newSection = $('#new-section');
 $newSection.on('click', function () {
   event.preventDefault();
