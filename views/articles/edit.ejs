@@ -1,5 +1,18 @@
 <h1>Edit <%= article.title %></h1>
 <form action="/articles/<%= article._id %>?_method=PATCH" method="post">
+  <label for="category">Category:</label><br/>
+  <select name="article[category]" id="category">
+    <option value="Code">Code</option>
+    <option value="Food">Food</option>
+    <option value="Fashion">Fashion</option>
+    <option value="Science">Science</option>
+    <option value="History">History</option>
+    <option value="Movies">Movies</option>
+    <option value="Politics">Politics</option>
+    <option value="Philosophy">Philosophy</option>
+    <option value="Architecture">Architecture</option>
+    <option value="Life-Hacks">Life-Hacks</option>
+  </select><br/>
   <label for="author">Author: </label><br/>
   <input id="author" type="text" name="article[author]" value="<%= article.author %>"><br/>
   <label for="title">Title: </label><br/>
@@ -15,5 +28,6 @@
   <input id="new-section" type="submit" value="Add a section">
   <input type="submit">
   <input id="hidden-value" type="hidden" value="<%= article.content.length %>">
+  <a href="/articles/<%= article._id %>">Cancel</a>
 </form>
 <script src="/scripts/newArticle.js"></script>
