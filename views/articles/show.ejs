@@ -9,9 +9,11 @@
   </div>
 </form>
 <% for(var i = 0; i < article.content.length; i++) { %>
-  <h2><%= article.content[i].title %></h2>
-  <div class="content">
-    <%- marked(article.content[i].content) %>
+  <div class="section">
+    <h2><%= article.content[i].title %></h2>
+    <div class="content">
+      <%- marked(article.content[i].content) %>
+    </div>
   </div>
 <% } %>
 

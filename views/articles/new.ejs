@@ -26,9 +26,12 @@
       <label for="section0">Section Title:<br/></label>
       <input id="section0" type="text" name="article[content][0][title]"><br/>
     </div>
-    <div>
-      <label for="section-content0">Section Content:<br/></label>
-      <textarea id="section-content0" name="article[content][0][content]" onkeyup="textAreaAdjust(this)" style=“overflow:hidden”></textarea><br/>
+    <div class="markdown">
+      <div>
+        <label for="section-content0">Section Content:<br/></label>
+        <textarea id="section-content0" name="article[content][0][content]"></textarea><br/>
+      </div>
+      <div class="section section-content0"></div>
     </div>
   </fieldset>
   <div>
@@ -38,4 +41,5 @@
     <input type="submit">
   </div>
 </form>
+<script src="/scripts/marked.js"></script>
 <script src="/scripts/newArticle.js" type="text/javascript"></script>

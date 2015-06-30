@@ -7,11 +7,13 @@ $newSection.on('click', function () {
   var $newSectionLabel =
     $('<label for="section' + sectionCounter + '">');
   var $newContentLabel =
-    $('<label for="content' + sectionCounter + '">');
+    $('<label for="section-content' + sectionCounter + '">');
   var $newInput =
     $('<input id="section' + sectionCounter + '" type="text" name="article[content][' + sectionCounter + '][title]"><br/>');
   var $newTextArea =
-    $('<textarea id="content' + sectionCounter + '" name="article[content][' + sectionCounter + '][content]" onkeyup="textAreaAdjust(this)" style=“overflow:hidden”>');
+    $('<textarea id="section-content' + sectionCounter + '" name="article[content][' + sectionCounter + '][content]">');
+  var $newPreview = $('<div class="section section-content' + sectionCounter + '">')
+  var $flexdiv = $('<div class="markdown">')
 
   $newSectionLabel.text('Section Title:').append($('<br/>'));
   $newContentLabel.text('Section Content:').append($('<br/>'));
@@ -22,12 +24,15 @@ $newSection.on('click', function () {
   $divTwo.append($newContentLabel)
          .append($newTextArea)
          .append($('<br/>'));
+  $flexdiv.append($divTwo)
+          .append($newPreview);
   $('fieldset').append($divOne)
-               .append($divTwo);
+               .append($flexdiv);
   sectionCounter++;
 });
 
-function textAreaAdjust(o) {
-    o.style.height = "1px";
-    o.style.height = (2 + o.scrollHeight) + "px";
-};
+$("body").on("keyup", "textarea", function (e) {
+  var $ta = $(this);
+  var $prev = $("." + $ta.attr('id'));
+  $prev.html(marked($ta.val()));
+});

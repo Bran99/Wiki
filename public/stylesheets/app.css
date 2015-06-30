@@ -36,10 +36,6 @@ a:hover {
   color: darkgoldenrod;
 }
 
-textarea {
-  resize: none;
-}
-
 dl a{
   background: lightgreen;
 }
@@ -99,7 +95,7 @@ input:focus, textarea:focus {
 nav {
   display: flex;
   justify-content: space-around;
-  border: 2px solid black;
+  background: beige;
 }
 
 fieldset {
@@ -110,4 +106,48 @@ fieldset {
 
 p {
   padding-left: .5em;
+}
+
+textarea {
+  resize: none;
+  width: 80%;
+  height: 50vh;
+}
+
+.markdown {
+  display: flex;
+}
+
+.markdown div {
+  flex-shrink: 0;
+  width: 50%;
+}
+
+.section h1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: black;
+  text-align: left;
+}
+
+.section a {
+  background: rgba(0, 0, 0, 0);
+  color: rgb(0, 0, 238);
+  cursor: auto;
+  padding: 0;
+  margin: 0;
+  text-decoration: underline;
+}
+
+.section h2 {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  border-bottom: none;
+}
+
+.section p {
+  padding-left: 0;
 }
