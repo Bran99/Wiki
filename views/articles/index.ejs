@@ -1,8 +1,8 @@
 <h1>Which article would you like to see?</h1>
-<a href="/articles/new" class="waves-effect waves-light btn">Create a New Article</a>
+<a href="/articles/new">Create a New Article</a>
 <dl>
   <% articles.forEach(function (eachArticle) { %>
-    <dt><a class="waves-effect waves-light btn"href="/articles/<%= eachArticle._id %>"><%= eachArticle.title %></a></dt>
+    <dt><a href="/articles/<%= eachArticle._id %>"><%= eachArticle.title %></a></dt>
     <dd>Category: <%= eachArticle.category %></dd>
     <dd><%= eachArticle.content[0].title %>: <%= eachArticle.content[0].content %></dd>
   <% }) %>

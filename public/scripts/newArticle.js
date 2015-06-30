@@ -2,8 +2,8 @@ var sectionCounter = $('#hidden-value').val() || 1;
 var $newSection = $('#new-section');
 $newSection.on('click', function () {
   event.preventDefault();
-  var $divOne = $('<div class="input-field">');
-  var $divTwo = $('<div class="input-field">');
+  var $divOne = $('<div>');
+  var $divTwo = $('<div>');
   var $newSectionLabel =
     $('<label for="section' + sectionCounter + '">');
   var $newContentLabel =
