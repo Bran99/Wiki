@@ -139,11 +139,11 @@ textarea {
   text-decoration: underline;
 }
 
-.section h2 {
+.content > h2 {
   display: block;
   font-size: 24px;
   font-weight: bold;
-  text-decoration: none;
+  border-bottom: none;
   color: black;
 }
 
