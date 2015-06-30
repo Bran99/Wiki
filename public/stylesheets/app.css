@@ -1,0 +1,17 @@
+h1 {
+  text-align: center;
+}
+
+#flex-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img {
+  flex-grow: 0;
+}
+
+a {
+  color: black;
+}
