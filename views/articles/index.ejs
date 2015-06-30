@@ -4,6 +4,6 @@
   <% articles.forEach(function (eachArticle) { %>
     <dt><a href="/articles/<%= eachArticle._id %>"><%= eachArticle.title %></a></dt>
     <dd>Category: <%= eachArticle.category %></dd>
-    <dd><%= eachArticle.content[0].title %>: <%= eachArticle.content[0].content %></dd>
+    <dd><%= eachArticle.content[0].title %>: <%- marked(eachArticle.content[0].content) %></dd>
   <% }) %>
 </dl>
