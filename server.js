@@ -44,7 +44,7 @@ app.get('/', function (req, res) {
   res.render('home');
 });
 
-mongoose.connect('mongodb://localhost:27017/wiki');
+mongoose.connect(MONGOURI);
 var db = mongoose.connection;
 
 db.on('error', function () {
