@@ -10,5 +10,12 @@
 </form>
 <% for(var i = 0; i < article.content.length; i++) { %>
   <h2><%= article.content[i].title %></h2>
-  <p><%= article.content[i].content %></p>
+  <div class="content">
+    <%- marked(article.content[i].content) %>
+  </div>
 <% } %>
+
+Last Edit: <%= article.date.toLocaleDateString("en-us", {
+    weekday: "long", year: "numeric", month: "short",
+    day: "numeric", hour: "2-digit", minute: "2-digit"
+}) %>

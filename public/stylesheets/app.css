@@ -48,7 +48,7 @@ dt {
   display: block;
 }
 
-div input, textarea {
+div input, textarea, select {
   color: black;
   text-decoration: none;
   transition: color .1s ease;
@@ -99,6 +99,7 @@ input:focus, textarea:focus {
 nav {
   display: flex;
   justify-content: space-around;
+  border: 2px solid black;
 }
 
 fieldset {

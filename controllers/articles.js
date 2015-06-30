@@ -1,9 +1,15 @@
 var express = require('express'),
     router = express.Router(),
     Article = require('../models/article.js').Article,
-    Section = require('../models/article.js').Section;
+    Section = require('../models/article.js').Section,
+    marked = require('marked');
 
 // remember, every route has /posts before it in here...
+router.use(function (req, res, next) {
+  res.locals.marked = marked;
+  next();
+});
+
 
 // INDEX
 router.get('/', function (req, res) {
@@ -85,6 +91,8 @@ router.get('/:id/edit', function (req, res) {
 
 // UPDATE
 router.patch('/:id', function (req, res) {
+  req.body.article.date = Date.now();
+
   Article.update({_id : req.params.id}, req.body.article, function (err, result) {
     if(err) {
       console.log(err);

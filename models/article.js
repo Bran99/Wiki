@@ -10,7 +10,8 @@ var articleSchema = Schema({
   author: {type: String, required: true},
   title: {type: String, required: true},
   content: [sectionSchema],
-  category: {type: String, required: true}
+  category: {type: String, required: true},
+  date: {type: Date, default: Date.now}
 });
 
 var Section = mongoose.model("Section", sectionSchema);
