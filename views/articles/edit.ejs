@@ -27,9 +27,12 @@
       <label for="section">Section Title: </label><br/>
       <input id="section" type="text" name="article[content][<%= i %>][title]" value="<%= article.content[i].title %>"><br/>
     </div>
-    <div>
-      <label for="section-content">Section Content:</label><br/>
-      <textarea id="section-content" name="article[content][<%= i %>][content]" onkeyup="textAreaAdjust(this)" style=“overflow:hidden”><%= article.content[i].content %></textarea><br/>
+    <div class="markdown">
+      <div>
+        <label for="section-content">Section Content:</label><br/>
+        <textarea id="section-content<%= i %>" name="article[content][<%= i %>][content]" onkeyup="textAreaAdjust(this)" style=“overflow:hidden”><%= article.content[i].content %></textarea><br/>
+      </div>
+      <div class="section section-content<%= i %>"></div>
     </div>
   <% } %>
 </fieldset>
@@ -42,4 +45,5 @@
   <input id="hidden-value" type="hidden" value="<%= article.content.length %>">
   <a href="/articles/<%= article._id %>">Cancel</a>
 </form>
+<script src="/scripts/marked.js"></script>
 <script src="/scripts/newArticle.js"></script>
