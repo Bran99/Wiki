@@ -8,6 +8,8 @@ var express = require('express'),
     mongoose = require('mongoose'),
     session = require('express-session');
 
+var PORT = process.env.PORT || 1337;
+
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
@@ -49,7 +51,7 @@ db.on('error', function () {
 });
 
 db.once('open', function () {
-  app.listen(1337, function () {
+  app.listen(PORT, function () {
     console.log("Now listening on port 1337");
   });
 });
