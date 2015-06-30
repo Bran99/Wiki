@@ -29,7 +29,7 @@
     </div>
     <div>
       <label for="section-content">Section Content:</label><br/>
-      <textarea id="section-content" name="article[content][<%= i %>][content]" ><%= article.content[i].content %></textarea><br/>
+      <textarea id="section-content" name="article[content][<%= i %>][content]" onkeyup="textAreaAdjust(this)" style=“overflow:hidden”><%= article.content[i].content %></textarea><br/>
     </div>
   <% } %>
 </fieldset>
