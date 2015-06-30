@@ -9,6 +9,7 @@ var express = require('express'),
     session = require('express-session');
 
 var PORT = process.env.PORT || 1337;
+var MONGOURI = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/wiki'
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
