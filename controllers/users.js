@@ -105,7 +105,7 @@ router.get('/:id/edit', function (req, res) {
 
 // UPDATE
 router.patch('/:id', function (req, res) {
-  User.update({_id : req.params.id}, req.body.article, function (err, result) {
+  User.update({_id : req.params.id}, req.body.user, function (err, result) {
     if(err) {
       console.log(err);
     } else {
