@@ -1,9 +1,9 @@
 
 <h1><%= article.title %></h1>
 <p>By <%= article.author %></p>
-<h2><%= article.category %></h2>
-<a href="/articles/<%= article._id %>/edit">Edit</a>
-<form action="/articles/<%= article._id %>?_method=DELETE" method="post">
+<h2 id="category"><%= article.category %></h2><br/>
+<a id="show-a" href="/articles/<%= article._id %>/edit">Edit</a>
+<form id="show-form" action="/articles/<%= article._id %>?_method=DELETE" method="post">
   <div class="input-field">
     <input type="button" value="Delete This Article">
   </div>

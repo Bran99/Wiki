@@ -99,7 +99,7 @@ router.get('/:id/edit', function (req, res) {
       };
     });
   } else {
-    res.redirect('/users/login');
+    res.redirect('/');
   }
 });
 
@@ -109,7 +109,7 @@ router.patch('/:id', function (req, res) {
     if(err) {
       console.log(err);
     } else {
-      res.redirect(301, '/users/' + req.params.id);
+      res.redirect(301, '/');
     };
   });
 });

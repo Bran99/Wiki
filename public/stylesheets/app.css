@@ -1,8 +1,13 @@
-h1 {
-  text-align: center;
+body {
+  background: aliceblue;
 }
 
-#flex-div {
+h1 {
+  text-align: center;
+  color: cornflowerblue;
+}
+
+.flex-stuff {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,6 +15,9 @@ h1 {
 
 img {
   flex-grow: 0;
+  padding: .2em;
+  border: 3px solid black;
+  border-radius: 5px;
 }
 
 a {
@@ -20,8 +28,85 @@ a {
   padding: .5em;
   margin: .7em;
   border-radius: 5px;
+  display: inline-block;
+  width: auto;
 }
 
 a:hover {
   color: darkgoldenrod;
+}
+
+textarea {
+  resize: none;
+}
+
+dl a{
+  background: lightgreen;
+}
+
+dt {
+  display: block;
+}
+
+div input, textarea {
+  color: black;
+  text-decoration: none;
+  transition: color .1s ease;
+  background: lavender;
+  padding: .5em;
+  margin: .7em;
+  border-radius: 5px;
+  display: inline-block;
+  width: auto;
+  border: none;
+}
+
+div input:hover, textarea:hover {
+  color: darkgoldenrod;
+}
+
+h2 {
+  display: block;
+  color: darkblue;
+  border-bottom: 1px solid black;
+  width: 80%;
+}
+
+textarea, input {
+  outline: none;
+  width: auto;
+}
+
+input:focus, textarea:focus {
+  color: darkgoldenrod;
+}
+
+#show-a {
+  display: inline-block;
+}
+
+#show-form {
+  display: inline-block;
+}
+
+#category {
+  display: inline;
+  font-size: 1em;
+  text-decoration: none;
+  border: none;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  padding-left: .5em;
 }

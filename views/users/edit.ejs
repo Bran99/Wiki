@@ -1,4 +1,4 @@
-<form action="/users/<%= user._id %>?_method=PATCH" method="post">
+<form class="flex-stuff" action="/users/<%= user._id %>?_method=PATCH" method="post">
   <div>
     <label for="name">Name:</label><br/>
     <input id="name" type="text" name="user[name]" value="<%= user.name %>"><br/>
@@ -9,7 +9,7 @@
   </div>
   <div>
     <label for="password">Password:</label><br/>
-    <input id="password" type="text" name="user[password]" placeholder="Please enter a new password"><br/>
+    <input id="password" type="text" name="user[password]" placeholder="Re-type password"><br/>
   </div>
   <div>
     <input type="submit">
