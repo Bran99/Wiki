@@ -43,7 +43,9 @@
     <input type="submit">
   </div>
   <input id="hidden-value" type="hidden" value="<%= article.content.length %>">
-  <input type="hidden" name="article[updates][]" value="<%= article.updates %>">
+  <% for(var i = 0; i < article.updates.length; i++) { %>
+    <input type="hidden" name="article[updates][<%= i %>]" value="<%= article.updates[i] %>">
+  <% } %>
   <a href="/articles/<%= article._id %>">Cancel</a>
 </form>
 <script src="/scripts/marked.js"></script>

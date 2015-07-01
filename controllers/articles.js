@@ -55,7 +55,7 @@ router.get('/:id', function (req, res) {
       if(err) {
         console.log(err);
       } else {
-        
+
         var navData = article.content.map(function (section, i) {
         	var linkTitle = section.title;
         	var linkID = "section-" + i;
@@ -105,6 +105,7 @@ router.get('/:id/edit', function (req, res) {
 // UPDATE
 router.patch('/:id', function (req, res) {
   req.body.article.date = Date.now();
+  console.log(req.body.article);
   req.body.article.updates.push(req.session.currentName);
   console.log(req.body.article);
 

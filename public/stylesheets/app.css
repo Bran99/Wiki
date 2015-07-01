@@ -96,6 +96,7 @@ nav {
   display: flex;
   justify-content: space-around;
   background: beige;
+  border-bottom: 1px solid burlywood;
 }
 
 fieldset {
@@ -153,8 +154,9 @@ textarea {
 
 .section-navigation {
   border: 1px solid black;
+  border-radius: 5px;
   width: 225px;
-  background: white;
+  background: gainsboro;
 }
 
 .section-navigation ol {
