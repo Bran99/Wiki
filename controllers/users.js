@@ -106,7 +106,7 @@ router.get('/:id/edit', function (req, res) {
 
 // UPDATE
 router.patch('/:id', function (req, res) {
-  req.body.password = bcrypt.hashSync(req.body.password, salt);
+  req.body.user.password = bcrypt.hashSync(req.body.user.password, salt);
   User.update({_id : req.params.id}, req.body.user, function (err, result) {
     if(err) {
       console.log(err);
