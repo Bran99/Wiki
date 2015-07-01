@@ -55,6 +55,18 @@ router.get('/:id', function (req, res) {
       if(err) {
         console.log(err);
       } else {
+        
+        var navData = article.content.map(function (section, i) {
+        	var linkTitle = section.title;
+        	var linkID = "section-" + i;
+
+        	return {
+        		title: linkTitle,
+        		id: linkID
+        	};
+        });
+
+        article.navData = navData;
         res.render('articles/show', { article : article });
       };
     });

@@ -150,3 +150,23 @@ textarea {
 .section p {
   padding-left: 0;
 }
+
+.section-navigation {
+  border: 1px solid black;
+  width: 225px;
+  background: white;
+}
+
+.section-navigation ol {
+  padding: 0 0 0 1.5em;
+  margin: 0;
+}
+
+.section-navigation a {
+  background: rgba(0, 0, 0, 0);
+  color: rgb(0, 0, 238);
+  cursor: auto;
+  padding: .5em;
+  margin: 0;
+  text-decoration: underline;
+}

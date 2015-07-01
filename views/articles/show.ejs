@@ -8,9 +8,18 @@
     <input type="button" value="Delete This Article">
   </div>
 </form>
+<aside class="section-navigation">
+	<ol>
+	<% article.navData.forEach(function (nav, i) { %>
+		<li>
+			<a href="#<%=nav.id %>"><%= nav.title %></a>
+		</li>
+	<% }) %>
+	</ol>
+</aside>
 <% for(var i = 0; i < article.content.length; i++) { %>
   <div class="section">
-    <h2><%= article.content[i].title %></h2>
+    <h2 id="section-<%= i %>"><%= article.content[i].title %></h2>
     <div class="content">
       <%- marked(article.content[i].content) %>
     </div>
