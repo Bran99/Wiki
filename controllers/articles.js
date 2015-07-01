@@ -29,7 +29,7 @@ router.get('/', function (req, res) {
 // NEW
 router.get('/new', function (req, res) {
   if(req.session.currentUser) {
-    res.render('articles/new');
+    res.render('articles/new', { user : req.session.currentName });
   } else {
     res.redirect(301, '/users/login');
   };
@@ -81,6 +81,7 @@ router.get('/:id/edit', function (req, res) {
       if (err) {
         console.log(err);
       } else {
+        article.user = req.session.currentName;
         res.render('articles/edit', { article : article });
       };
     });
@@ -92,6 +93,8 @@ router.get('/:id/edit', function (req, res) {
 // UPDATE
 router.patch('/:id', function (req, res) {
   req.body.article.date = Date.now();
+  req.body.article.updates.push(req.session.currentName);
+  console.log(req.body.article);
 
   Article.update({_id : req.params.id}, req.body.article, function (err, result) {
     if(err) {

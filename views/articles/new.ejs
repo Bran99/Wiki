@@ -14,8 +14,9 @@
     <option value="Life-Hacks">Life-Hacks</option>
   </select><br/>
   <div>
-    <label for="author">Author:<br/></label>
-    <input id="author" type="text" name="article[author]"><br/>
+    <label for="author">Author: <%= user %><br/></label>
+     <input id="author" type="hidden" name="article[author]" value="<%= user %>"><br/>
+     <input type="hidden" name="article[updates][]" value="<%= user %>">
   </div>
   <div>
     <label for="title">Title:<br/></label>

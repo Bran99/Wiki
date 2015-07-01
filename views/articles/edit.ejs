@@ -14,7 +14,7 @@
     <option value="Life-Hacks">Life-Hacks</option>
   </select><br/>
   <div>
-    <label for="author">Author: </label><br/>
+    <label for="author">Author: <%= article.user %></label><br/>
     <input id="author" type="text" name="article[author]" value="<%= article.author %>"><br/>
   </div>
   <div>
@@ -43,6 +43,7 @@
     <input type="submit">
   </div>
   <input id="hidden-value" type="hidden" value="<%= article.content.length %>">
+  <input type="hidden" name="article[updates][]" value="<%= article.updates %>">
   <a href="/articles/<%= article._id %>">Cancel</a>
 </form>
 <script src="/scripts/marked.js"></script>

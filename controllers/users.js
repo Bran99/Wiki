@@ -29,6 +29,7 @@ router.post('/login', function (req, res) {
   User.findOne({userName : req.body.users.userName}, function (err, user) {
     if(user && bcrypt.compareSync(req.body.users.password, user.password)) {
       req.session.currentUser = user.userName;
+      req.session.currentName = user.name;
       req.session.currentUserId = user._id;
       res.redirect(301, '/');
     } else {
